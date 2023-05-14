@@ -13,4 +13,3 @@ steps:
       - whoami
       - echo $SSH_PRIVATE_KEY
       - ssh
-      - exit
