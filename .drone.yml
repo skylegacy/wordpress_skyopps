@@ -10,7 +10,7 @@ steps:
         from_secret: SSH_PRIVATE_KEY
     volumes:
       - name: prv_key
-        path: /root/ssh/
+        path: /root/ssh
     commands:
       - echo location-ssh info 10
       - whoami
