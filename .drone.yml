@@ -4,13 +4,12 @@ name: default
 
 steps:
   - name: test
-    image: alpine
+    image: rastasheep/ubuntu-sshd
     commands:
-      - echo location-runner info 4
+      - echo location-ssh info 4
       - whoami
-      - ifconfig
-      - cd /wp_proj
-      - touch test_drone_runner.txt
+      - echo $SSH_PRIVATE_KEY
+      - ssh
       - exit
     secrets:
       - source: SSH_PRIVATE_KEY
