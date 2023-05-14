@@ -4,12 +4,13 @@ name: default
 
 steps:
   - name: test
-    image: appleboy/drone-ssh
+    image: rastasheep/ubuntu-sshd
     environment:
       SSH_PRIVATE_KEY:
         from_secret: SSH_PRIVATE_KEY
     volumes:
-      - "/proj_root/m2_local_env/ssh-key/vagrant_private_key:/root/ssh/drone_rsa"
+      - name: prv_key
+          path: /root/ssh/drone_rsa
     commands:
       - echo location-ssh info 10
       - whoami
@@ -17,3 +18,7 @@ steps:
       - ssh -i /root/ssh/drone_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io ifconfig
       - cd /var/www/data/wp_proj
       - touch runner_access.txt
+volumes:
+  - name: prv_key
+    host:
+      path: /proj_root/m2_local_env/ssh-key/vagrant_private_key
