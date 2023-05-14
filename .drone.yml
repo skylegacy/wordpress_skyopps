@@ -8,8 +8,8 @@ steps:
     commands:
       - echo location-ssh info 4
       - whoami
-      - echo $SSH_PRIVATE_KEY
-      - ssh
+      - echo "$$SSH_PRIVATE_KEY"
+      - sudo echo "$$SSH_PRIVATE_KEY" > $home/.ssh/id_rsa
       - exit
     secrets:
       - source: SSH_PRIVATE_KEY
