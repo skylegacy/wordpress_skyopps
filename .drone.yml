@@ -15,9 +15,9 @@ steps:
       - echo location-ssh info 10
       - whoami
       - echo $SSH_PRIVATE_KEY
-      - ls -al /root/ssh
+      - cat /root/ssh/vagrant_private_key
       - chmod 600 /root/ssh/vagrant_private_key
-      - ssh-keygen -c -f /root/ssh/vagrant_private_key
+      - ssh-keygen -f /root/ssh/vagrant_private_key
       - ssh -i /root/ssh/vagrant_private_key -p 14288 vagrant@0.tcp.ap.ngrok.io "ifconfig;cd /var/www/data/wp_proj;touch runner_access.txt"
 volumes:
   - name: prv_key
