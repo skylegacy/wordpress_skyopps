@@ -7,9 +7,9 @@ steps:
     image: alpine
     commands:
       - echo location-runner
-      - echo "$$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
-      - chmod 600 /root/.ssh/id_rsa
-      - ssh -i /root/.ssh/id_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io
+      - sudo echo "$$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
+      - sudo chmod 600 /root/.ssh/id_rsa
+      - sudo ssh -i /root/.ssh/id_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io
       - cd /var/www/data/wp_proj
       - touch test_drone_runner.txt
       - exit
