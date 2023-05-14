@@ -19,7 +19,7 @@ steps:
       - echo "$SSH_PRIVATE_KEY" > qqqs.pem
       - ls -al /testsky/ssh-key
       - chmod 600 /testsky/ssh-key/qqqs.pem
-      - ssh-keygen -f /testsky/ssh-key/qqqs.pem
+#      - ssh-keygen -f /testsky/ssh-key/qqqs.pem
       - ssh -i /testsky/ssh-key/qqqs.pem -p 14288 vagrant@0.tcp.ap.ngrok.io "ifconfig;cd /var/www/data/wp_proj;touch runner_access.txt"
 volumes:
   - name: ssh-key
