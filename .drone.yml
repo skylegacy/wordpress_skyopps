@@ -15,8 +15,8 @@ steps:
       - echo location-ssh info 10
       - whoami
       - echo $SSH_PRIVATE_KEY
-      - ssh-keygen -c -f /root/ssh/drone_rsa
       - chmod 600 /root/ssh/drone_rsa
+      - ssh-keygen -c -f /root/ssh/drone_rsa
       - ssh -i /root/ssh/drone_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io
       - ifconfig
       - cd /var/www/data/wp_proj
