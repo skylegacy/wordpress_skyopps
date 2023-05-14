@@ -8,9 +8,8 @@ steps:
     commands:
       - echo location-runner info 4
       - whoami
-      - env
-      - exit
-      - cd /var/www/data/wp_proj
+      - ifconfig
+      - cd /wp_proj
       - touch test_drone_runner.txt
       - exit
     secrets:
