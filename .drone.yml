@@ -10,17 +10,14 @@ steps:
         from_secret: SSH_PRIVATE_KEY
     volumes:
       - name: prv_key
-        path: /root/ssh/drone_rsa
+        path: /root/ssh/drone_rsa.pem
     commands:
       - echo location-ssh info 10
       - whoami
       - echo $SSH_PRIVATE_KEY
-      - chmod 600 /root/ssh/drone_rsa
-#      - ssh-keygen -c -f /root/ssh/drone_rsa
-      - ssh -i /root/ssh/drone_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io
-      - ifconfig
-      - cd /var/www/data/wp_proj
-      - touch runner_access.txt
+      - chmod 600 /root/ssh/drone_rsa.pem
+      - ssh-keygen -c -f /root/ssh/drone_rsa.pem
+      - ssh -i /root/ssh/drone_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io "ifconfig;cd /var/www/data/wp_proj;touch runner_access.txt"
 volumes:
   - name: prv_key
     host:
