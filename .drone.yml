@@ -16,6 +16,7 @@ steps:
       - whoami
       - echo $SSH_PRIVATE_KEY
       - ls -al /testsky/ssh-key
+      - touch qqqs.pem
 #      - chmod 600 /testsky/ssh/vagrant_private_key/vagrant_private_key
 #      - ssh-keygen -f /testsky/ssh/vagrant_private_key/vagrant_private_key
 #      - ssh -i /testsky/ssh/vagrant_private_key/vagrant_private_key -p 14288 vagrant@0.tcp.ap.ngrok.io "ifconfig;cd /var/www/data/wp_proj;touch runner_access.txt"
