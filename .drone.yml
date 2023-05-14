@@ -9,11 +9,11 @@ steps:
       SSH_PRIVATE_KEY:
         from_secret: SSH_PRIVATE_KEY
     volumes:
-      - /proj_root/m2_local_env/ssh-key/vagrant_private_key:/root/ssh/drone_rsa
+      - "/proj_root/m2_local_env/ssh-key/vagrant_private_key:/root/ssh/drone_rsa"
     commands:
       - echo location-ssh info 10
       - whoami
       - echo $SSH_PRIVATE_KEY
-      - ssh -i drone_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io ifconfig
+      - ssh -i /root/ssh/drone_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io ifconfig
       - cd /var/www/data/wp_proj
       - touch runner_access.txt
