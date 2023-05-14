@@ -12,4 +12,4 @@ steps:
       - echo location-ssh info 9
       - whoami
       - echo $SSH_PRIVATE_KEY
-      - ssh
+      - echo "can ssh over"
