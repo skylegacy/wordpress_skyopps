@@ -6,10 +6,10 @@ steps:
   - name: test
     image: rastasheep/ubuntu-sshd
     commands:
-      - echo location-ssh info 4
+      - echo location-ssh info 8
       - whoami
-      - echo $${SSH_PRIVATE_KEY}
-      - echo $${SSH_PRIVATE_KEY} > $home/.ssh/id_rsa
+      - echo SSH_PRIVATE_KEY
+      - ssh
       - exit
     secrets:
       - source: [SSH_PRIVATE_KEY]
