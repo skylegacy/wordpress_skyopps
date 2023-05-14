@@ -8,8 +8,9 @@ steps:
     commands:
       - echo location-ssh info 8
       - whoami
-      - echo SSH_PRIVATE_KEY
+      - echo $${SSH_PRIVATE_KEY}
       - ssh
       - exit
     secrets:
-      - source: [SSH_PRIVATE_KEY]
+      - source: SSH_PRIVATE_KEY
+          target: SSH_PRIVATE_KEY
