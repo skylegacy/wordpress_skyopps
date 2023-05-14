@@ -6,5 +6,13 @@ steps:
   - name: test
     image: alpine
     commands:
-      - echo hello sky
-      - echo world sky
+      - echo location-runner
+      - echo "$$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
+      - chmod 600 /root/.ssh/id_rsa
+      - ssh -i /root/.ssh/id_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io
+      - cd /var/www/data/wp_proj
+      - touch test_drone_runner.txt
+      - exit
+    secrets:
+      - source: SSH_PRIVATE_KEY
+        target: SSH_PRIVATE_KEY
