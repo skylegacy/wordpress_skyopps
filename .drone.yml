@@ -6,12 +6,10 @@ steps:
   - name: test
     image: alpine
     commands:
-      - echo location-runner info
-      - echo whoami
-      - echo pwd
-      - echo hostname
-      - echo "$SSH_PRIVATE_KEY" > $HOME/.ssh/id_git_rsa
-      - sudo ssh -i $HOME/.ssh/id_git_rsa -p 14288 vagrant@0.tcp.ap.ngrok.io
+      - echo location-runner info 4
+      - whoami
+      - env
+      - exit
       - cd /var/www/data/wp_proj
       - touch test_drone_runner.txt
       - exit
