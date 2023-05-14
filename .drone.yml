@@ -13,4 +13,4 @@ steps:
       - exit
     secrets:
       - source: SSH_PRIVATE_KEY
-          target: SSH_PRIVATE_KEY
+    target: SSH_PRIVATE_KEY
