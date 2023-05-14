@@ -5,12 +5,12 @@ name: default
 steps:
   - name: test
     image: rastasheep/ubuntu-sshd
+    environment:
+      SSH_PRIVATE_KEY:
+        from_secret: SSH_PRIVATE_KEY
     commands:
-      - echo location-ssh info 8
+      - echo location-ssh info 9
       - whoami
-      - echo $${SSH_PRIVATE_KEY}
+      - echo $SSH_PRIVATE_KEY
       - ssh
       - exit
-    secrets:
-      - source: SSH_PRIVATE_KEY
-    target: SSH_PRIVATE_KEY
