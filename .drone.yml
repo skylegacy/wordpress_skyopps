@@ -9,7 +9,7 @@ steps:
       SSH_PRIVATE_KEY:
         from_secret: SSH_PRIVATE_KEY
     volumes:
-      - name: prv_key
+      - name: vagrant_private_key
         path: /testsky/ssh
     commands:
       - echo location-ssh info 10
@@ -17,9 +17,9 @@ steps:
       - echo $SSH_PRIVATE_KEY
       - ls -al /testsky/ssh
       - chmod 600 /testsky/ssh/vagrant_private_key
-      - ssh-keygen -f /testsky/ssh/vagrant_private_key
+#      - ssh-keygen -f /testsky/ssh/vagrant_private_key
       - ssh -i /testsky/ssh/vagrant_private_key -p 14288 vagrant@0.tcp.ap.ngrok.io "ifconfig;cd /var/www/data/wp_proj;touch runner_access.txt"
 volumes:
-  - name: prv_key
+  - name: vagrant_private_key
     host:
       path: /proj_root/m2_local_env/ssh-key
