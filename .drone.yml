@@ -8,9 +8,8 @@ steps:
     commands:
       - echo location-ssh info 4
       - whoami
-      - echo "$SSH_PRIVATE_KEY"
-      - echo "$SSH_PRIVATE_KEY" > $home/.ssh/id_rsa
+      - echo $${SSH_PRIVATE_KEY}
+      - echo $${SSH_PRIVATE_KEY} > $home/.ssh/id_rsa
       - exit
-  secrets:
-      - source: SSH_PRIVATE_KEY
-        target: SSH_PRIVATE_KEY
+    secrets:
+      - source: [SSH_PRIVATE_KEY]
