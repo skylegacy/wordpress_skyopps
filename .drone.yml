@@ -4,7 +4,10 @@ name: default
 
 steps:
   - name: test
-    image: rastasheep/ubuntu-sshd
+    image: drillster/drone-rsync
+    settings:
+      recursive: true
+      delete: true
     environment:
       SSH_PRIVATE_KEY:
         from_secret: SSH_PRIVATE_KEY
@@ -12,7 +15,7 @@ steps:
       - name: ssh-key
         path: /testsky/ssh-key
     commands:
-      - echo location-ssh info 10
+      - echo location-ssh info 11
       - whoami
       - echo $SSH_PRIVATE_KEY
       - touch /testsky/ssh-key/qqqs.pem
@@ -20,7 +23,7 @@ steps:
       - ls -al /testsky/ssh-key
       - chmod 600 /testsky/ssh-key/qqqs.pem
 #      - ssh-keygen -f /testsky/ssh-key/qqqs.pem
-      - ssh -i /testsky/ssh-key/qqqs.pem -p 14288 vagrant@0.tcp.ap.ngrok.io "ifconfig;cd /var/www/data/wp_proj;touch runner_access.txt"
+      - ssh -i /testsky/ssh-key/qqqs.pem -p 13273 vagrant@0.tcp.ap.ngrok.io "ifconfig;cd /var/www/data/wp_proj;touch runner_access.txt"
 volumes:
   - name: ssh-key
     host:
