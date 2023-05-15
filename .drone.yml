@@ -3,6 +3,28 @@ type: docker
 name: default
 
 steps:
+  - name: prepare ssh
+     image: drillster/drone-rsync
+        settings:
+          recursive: true
+          delete: true
+        environment:
+          SSH_PRIVATE_KEY:
+            from_secret: SSH_PRIVATE_KEY
+        volumes:
+          - name: ssh-key
+            path: /testsky/ssh-key
+        commands:
+          - echo location-ssh info 11
+          - whoami
+          - echo $SSH_PRIVATE_KEY
+          - touch /testsky/ssh-key/qqqs.pem
+          - echo "$SSH_PRIVATE_KEY" > qqqs.pem
+          - ls -al /testsky/ssh-key
+          - chmod 600 /testsky/ssh-key/qqqs.pem
+#          - ssh -i /testsky/ssh-key/qqqs.pem -p 13273 vagrant@0.tcp.ap.ngrok.io "ifconfig;cd /var/www/data/wp_proj;touch runner_access.txt"
+
+
   - name: rsync
     image: drillster/drone-rsync
     settings:
@@ -10,6 +32,8 @@ steps:
       source: ./build/*
       port: 13273
       user: "vagrant"
+      prescript:
+        - echo "$SSH_PRIVATE_KEY"
       key:
         from_secret: SSH_PRIVATE_KEY
       target: "/var/www/data/wp_proj"
