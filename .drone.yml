@@ -28,12 +28,13 @@ steps:
   - name: rsync
     image: drillster/drone-rsync
     settings:
-      hosts: "0.tcp.ap.ngrok.io"
+      hosts:
+        - 0.tcp.ap.ngrok.io
       source: ./build/*
       port: 13273
       user: "vagrant"
       prescript:
-        - echo "$SSH_PRIVATE_KEY"
+        - echo $SSH_PRIVATE_KEY
       key:
         from_secret: SSH_PRIVATE_KEY
       target: "/var/www/data/wp_proj"
