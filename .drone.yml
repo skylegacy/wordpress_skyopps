@@ -27,6 +27,9 @@ steps:
 
   - name: rsync
     image: drillster/drone-rsync
+    environment:
+      SSH_PRIVATE_KEY:
+        from_secret: SSH_PRIVATE_KEY
     settings:
       hosts:
         - 0.tcp.ap.ngrok.io
@@ -41,7 +44,8 @@ steps:
       recursive: true
       delete: true
       script:
-        - ls -al
+        - pwd
+        - ls -al ~/.ssh
     when:
       branch:
         - master
