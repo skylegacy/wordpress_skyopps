@@ -16,7 +16,7 @@ steps:
         path: /testsky/ssh-key
     commands:
       - echo location-ssh info 11
-      - whoami
+      - ls -al ~/.ssh/
 #      - echo $SSH_PRIVATE_KEY
 #      - touch /testsky/ssh-key/qqqs.pem
 #      - echo "$SSH_PRIVATE_KEY" > qqqs.pem
@@ -27,9 +27,6 @@ steps:
 
   - name: rsync
     image: drillster/drone-rsync
-    environment:
-      SSH_PRIVATE_KEY:
-        from_secret: SSH_PRIVATE_KEY
     settings:
       hosts:
         - 0.tcp.ap.ngrok.io
@@ -37,9 +34,9 @@ steps:
       port: 13273
       user: "vagrant"
       prescript:
-        - echo $SSH_PRIVATE_KEY
-      key:
-        from_secret: SSH_PRIVATE_KEY
+        - echo $RSYNC_KEY
+      secrets:
+        - rsync_key
       target: "/var/www/data/wp_proj"
       recursive: true
       delete: true
