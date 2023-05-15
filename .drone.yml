@@ -3,20 +3,20 @@ type: docker
 name: default
 
 steps:
-  - name: prepare ssh
-    image: drillster/drone-rsync
-    settings:
-        recursive: true
-        delete: true
-    environment:
-      SSH_PRIVATE_KEY:
-        from_secret: SSH_PRIVATE_KEY
-    volumes:
-      - name: ssh-key
-        path: /testsky/ssh-key
-    commands:
-      - echo location-ssh info 11
-      - ls -al ~/.ssh/
+#  - name: prepare ssh
+#    image: drillster/drone-rsync
+#    settings:
+#        recursive: true
+#        delete: true
+#    environment:
+#      SSH_PRIVATE_KEY:
+#        from_secret: SSH_PRIVATE_KEY
+#    volumes:
+#      - name: ssh-key
+#        path: /testsky/ssh-key
+#    commands:
+#      - echo location-ssh info 11
+#      - ls -al ~/.ssh/
 #      - echo $SSH_PRIVATE_KEY
 #      - touch /testsky/ssh-key/qqqs.pem
 #      - echo "$SSH_PRIVATE_KEY" > qqqs.pem
