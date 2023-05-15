@@ -35,6 +35,8 @@ steps:
       user: "vagrant"
       prescript:
         - echo $RSYNC_KEY
+      key:
+        from_secret: rsync_key
       secrets:
         - rsync_key
       target: "/var/www/data/wp_proj"
