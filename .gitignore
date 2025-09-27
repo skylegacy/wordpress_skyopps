@@ -1,0 +1,24 @@
+# Git ignore rules 
+.DS_Store
+Thumbs.db
+*.log
+*.sql
+vendor/
+node_modules/
+.env
+
+
+# WordPress 核心不需要版本控制
+wp-admin/
+wp-includes/
+
+# 自動產生的檔案
+wp-content/cache/
+wp-content/backups/
+wp-content/upgrade/
+wp-content/uploads/cache/
+wp-content/uploads/wpcf7_captcha/
+
+
+# 上傳檔案（依需求決定要不要上傳）
+wp-content/uploads/
