@@ -6,7 +6,7 @@ Thumbs.db
 vendor/
 node_modules/
 .env
-
+wp-config.php
 
 # WordPress 核心不需要版本控制
 wp-admin/
